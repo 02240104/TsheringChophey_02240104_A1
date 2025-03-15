@@ -1,13 +1,13 @@
 import random
 
 def guess_number_game():
-    print("Kuzuzangpo to Guess the Number Game!")
+    print("Kuzuzangpo La to Guessing the Number Game!")
     number_to_guess = random.randint(1, 100)
     attempts = 0
 
     while True:
         try:
-            user_guess = int(input("Guess a number between 1 and 100: "))
+            user_guess = int(input("Please guess a number between 1 and 100: "))
             attempts += 1
             
             if user_guess < 1 or user_guess > 100:
@@ -15,11 +15,11 @@ def guess_number_game():
                 continue
             
             if user_guess < number_to_guess:
-                print("Too low! Try again.")
+                print("Oops! Too low! Sorry- Try again.")
             elif user_guess > number_to_guess:
-                print("Too high! Try again.")
+                print("Oops! Too high! Sorry- Try again.")
             else:
-                print(f"Hooray! You've guessed the number {number_to_guess} in {attempts} attempts.")
+                print(f"Hooray! You've guessed the right number {number_to_guess} in {attempts} attempts.")
                 break
         except ValueError:
             print("Invalid input! Please enter a valid number.")
@@ -47,9 +47,9 @@ def rock_paper_scissors_game():
         elif (user_choice == "rock" and computer_choice == "scissors") or \
              (user_choice == "paper" and computer_choice == "rock") or \
              (user_choice == "scissors" and computer_choice == "paper"):
-            print("You win!")
+            print("You won! Congratulations!!")
         else:
-            print("You lose!")
+            print("You lose! There is a room for improvement.")
 
 def main():
     while True:

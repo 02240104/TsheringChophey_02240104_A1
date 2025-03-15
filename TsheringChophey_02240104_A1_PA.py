@@ -40,10 +40,6 @@ def is_palindrome(text):
     return cleaned_text == cleaned_text[::-1]
 
 
-def word_counter(file_path):
-    """To count the presence of specific words in a text file."""
-    words_to_count = ["the", "was", "and"]
-    counts = {word: 0 for word in words_to_count}
     
     with open(file_path, 'r') as file:
         text = file.read().lower()    
@@ -98,16 +94,34 @@ def main():
             print(f"Is palindrome: {result}")
 
         elif choice == '6':
-            file_path = input("Enter the path to the text file: ")
-            result = word_counter(file_path)
-            print("Word counts:", result)
+            def words_to_count(nameoffile):
+                try:
+                    with open(nameoffile,'r') as file:
+                        content = file.read()
+                except FileNotFoundError:
+                    print("We Couldn't Find Your File!")
+                    return{}
 
-        elif choice == '7':
-            print("Exiting the program.")
+                words_needed_to_find = ["and", "the", "was"]
+                words = content.lower().split()
+
+                word_counts = {word: words.count(word) for word in words_needed_to_find}
+                
+                return word_counts
+
+            nameoffile = input("Please enter the name of the file you want to count the word in: ").strip()
+
+            counts = words_to_count(nameoffile)
+
+            if counts: 
+                for word, count in counts.items():
+                    print(f"'{word}' appears {count} times.")
+        exit_code = input("Wanna try again?(Yes/No): ").strip().upper()
+
+        if choice == '7':
+            print("Exiting the program. Thank You ")
             break
 
-        else:
-            print("Invalid choice. Please select a number between 1 and 7.")
 
 
 if __name__ == "__main__":
